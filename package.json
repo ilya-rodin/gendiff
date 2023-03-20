@@ -1,0 +1,15 @@
+{
+  "name": "@hexlet/code",
+  "version": "1.0.0",
+  "description": "Console application that can find difference between two files",
+  "main": "index.js",
+  "type": "module",
+  "repository": {
+    "url": "https://github.com/ilya-rodin/frontend-project-46"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
