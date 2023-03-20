@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { Command, Option } from 'commander';
+const { Command, Option } = require('commander');
 const program = new Command();
 
 program
