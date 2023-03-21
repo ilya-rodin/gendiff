@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const { Command, Option } = require('commander');
+const { Command } = require('commander');
 const program = new Command();
 
 program
@@ -11,6 +11,6 @@ program
 
 program
   .helpOption('-h --help', 'output usage information')
-  .addOption(new Option('-f --format <type>', 'output format'));
+  .option('-f --format <type>', 'output format');
 
 program.parse(process.argv);
