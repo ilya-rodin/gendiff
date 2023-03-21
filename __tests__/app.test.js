@@ -1,5 +1,5 @@
 const path = require('node:path');
-const genDiff = require('../src/app.js');
+const genDiff = require('../src/app');
 
 const path1 = path.resolve('__tests__/file1.json');
 const path2 = path.resolve('__tests__/file2.json');
@@ -12,7 +12,7 @@ const testDiffs = `\t- follow: false
 \t+ verbose: true
 `;
 
-describe('test case 1', function () {
+describe('test case 1', () => {
   test('test base diff', () => {
     const diffs = genDiff(path1, path2);
     expect(diffs).toEqual(testDiffs);
