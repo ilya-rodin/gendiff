@@ -19,7 +19,7 @@ function findDiff(path1, path2) {
   const keys = _.union(keys1, keys2);
 
   /* eslint-disable no-param-reassign */
-  return keys.reduce((acc, key) => {
+  let result = keys.reduce((acc, key) => {
     if (_.includes(keys1, key) && _.includes(keys2, key) && data1[key] !== data2[key]) {
       acc += `\t- ${key}: ${data1[key]}\n\t+ ${key}: ${data2[key]}\n`;
       return acc;
@@ -38,6 +38,9 @@ function findDiff(path1, path2) {
     acc += `\t  ${key}: ${data1[key]}\n`;
     return acc;
   }, '');
+
+  result = `{\n${result}}`;
+  return result;
   /* eslint-enable no-param-reassign */
 }
 

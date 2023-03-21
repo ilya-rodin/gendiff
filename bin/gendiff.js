@@ -11,6 +11,9 @@ program
   .version('0.8.0');
 
 program
+  .action('');
+
+program
   .helpOption('-h --help', 'output usage information')
   .option('-f --format <type>', 'output format');
 
