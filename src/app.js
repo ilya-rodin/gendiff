@@ -2,17 +2,17 @@ const _ = require('lodash');
 const fs = require('node:fs');
 const path = require('path');
 
-function getDataFromPath(path1, path2) {
-  const resolvedPath1 = path.resolve(path1);
-  const resolvedPath2 = path.resolve(path2);
-  const data1 = JSON.parse(fs.readFileSync(resolvedPath1, 'utf-8'));
-  const data2 = JSON.parse(fs.readFileSync(resolvedPath2, 'utf-8'));
+function getDataFromPath(filepath1, filepath2) {
+  const absolutePath1 = path.resolve(process.cwd(), filepath1);
+  const absolutePath2 = path.resolve(process.cwd(), filepath2);
+  const data1 = JSON.parse(fs.readFileSync(absolutePath1, 'utf-8'));
+  const data2 = JSON.parse(fs.readFileSync(absolutePath2, 'utf-8'));
 
   return [data1, data2];
 }
 
-function findDiff(path1, path2) {
-  const [data1, data2] = getDataFromPath(path1, path2);
+function findDiff(filepath1, filepath2) {
+  const [data1, data2] = getDataFromPath(filepath1, filepath2);
 
   const keys1 = _.keys(data1).sort();
   const keys2 = _.keys(data2).sort();

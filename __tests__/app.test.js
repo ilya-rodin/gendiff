@@ -1,8 +1,8 @@
 const path = require('node:path');
 const genDiff = require('../src/app');
 
-const path1 = path.resolve('__tests__/file1.json');
-const path2 = path.resolve('__tests__/file2.json');
+const path1 = path.resolve('__fixtures__', 'file1.json');
+const path2 = path.resolve('__fixtures__', 'file2.json');
 
 const testDiffs = `{\n\t- follow: false
 \t  host: hexlet.io
