@@ -13,7 +13,7 @@ const testDiffs = `{\n  - follow: false
 }`;
 
 describe('test case 1', () => {
-  test('test base diff', () => {
+  test('diff two flat files', () => {
     const diffs = genDiff(path1, path2);
     expect(diffs).toEqual(testDiffs);
   });
