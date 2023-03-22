@@ -17,25 +17,28 @@ function genDiff(filepath1, filepath2) {
   const keys1 = _.sortBy(_.keys(data1));
   const keys2 = _.sortBy(_.keys(data2));
   const keys = _.union(keys1, keys2);
+  const spaces = '  ';
 
   /* eslint-disable no-param-reassign */
   let result = keys.reduce((acc, key) => {
+    acc += spaces;
+
     if (_.includes(keys1, key) && _.includes(keys2, key) && data1[key] !== data2[key]) {
-      acc += `  - ${key}: ${data1[key]}\n  + ${key}: ${data2[key]}\n`;
+      acc += `- ${key}: ${data1[key]}\n  + ${key}: ${data2[key]}\n`;
       return acc;
     }
 
     if (!_.includes(keys2, key)) {
-      acc += `  - ${key}: ${data1[key]}\n`;
+      acc += `- ${key}: ${data1[key]}\n`;
       return acc;
     }
 
     if (_.includes(keys2, key) && !_.includes(keys1, key)) {
-      acc += `  + ${key}: ${data2[key]}\n`;
+      acc += `+ ${key}: ${data2[key]}\n`;
       return acc;
     }
 
-    acc += `    ${key}: ${data1[key]}\n`;
+    acc += `${spaces}${key}: ${data1[key]}\n`;
     return acc;
   }, '');
 
