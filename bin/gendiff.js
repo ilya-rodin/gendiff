@@ -1,18 +1,17 @@
 #!/usr/bin/env node
 
 const { Command } = require('commander');
-const findDiff = require('../src/app');
+const genDiff = require('../src/app');
 
 const program = new Command();
 
 program
   .name('gendiff')
-  // FIXME: callback in action method doesn't return a files path.
-  //  Need to fix this.
+  .argument('<filepath1>')
+  .argument('<filepath2>')
   .action((filepath1, filepath2) => {
-    console.log(findDiff(filepath1, filepath2));
+    console.log(genDiff(filepath1, filepath2));
   })
-  .usage('[options] <filepath1> <filepath2>')
   .description('Compares two configuration files and shows a difference.')
   .version('0.8.0');
 
