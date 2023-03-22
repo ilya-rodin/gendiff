@@ -11,31 +11,31 @@ function getDataFromPath(filepath1, filepath2) {
   return [data1, data2];
 }
 
-function findDiff(filepath1, filepath2) {
+function genDiff(filepath1, filepath2) {
   const [data1, data2] = getDataFromPath(filepath1, filepath2);
 
-  const keys1 = _.keys(data1).sort();
-  const keys2 = _.keys(data2).sort();
+  const keys1 = _.sortBy(_.keys(data1));
+  const keys2 = _.sortBy(_.keys(data2));
   const keys = _.union(keys1, keys2);
 
   /* eslint-disable no-param-reassign */
   let result = keys.reduce((acc, key) => {
     if (_.includes(keys1, key) && _.includes(keys2, key) && data1[key] !== data2[key]) {
-      acc += `\t- ${key}: ${data1[key]}\n\t+ ${key}: ${data2[key]}\n`;
+      acc += `  - ${key}: ${data1[key]}\n  + ${key}: ${data2[key]}\n`;
       return acc;
     }
 
     if (!_.includes(keys2, key)) {
-      acc += `\t- ${key}: ${data1[key]}\n`;
+      acc += `  - ${key}: ${data1[key]}\n`;
       return acc;
     }
 
     if (_.includes(keys2, key) && !_.includes(keys1, key)) {
-      acc += `\t+ ${key}: ${data2[key]}\n`;
+      acc += `  + ${key}: ${data2[key]}\n`;
       return acc;
     }
 
-    acc += `\t  ${key}: ${data1[key]}\n`;
+    acc += `    ${key}: ${data1[key]}\n`;
     return acc;
   }, '');
 
@@ -44,4 +44,4 @@ function findDiff(filepath1, filepath2) {
   /* eslint-enable no-param-reassign */
 }
 
-module.exports = findDiff;
+module.exports = genDiff;
