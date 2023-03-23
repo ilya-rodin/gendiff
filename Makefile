@@ -2,7 +2,7 @@ run:
 	./bin/gendiff.js
 
 install:
-	npm ci
+	npm install
 
 test:
 	npm test
