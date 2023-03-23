@@ -5,13 +5,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: npm install
+      - run: make install
       - run: npm link
   test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: npm install
+      - run: make install
       - run: npm link
       - run: make test
       - run: make test-coverage
