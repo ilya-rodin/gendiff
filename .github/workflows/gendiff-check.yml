@@ -3,50 +3,14 @@ on: push
 jobs:
   build:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [ 18.x ]
-
     steps:
       - uses: actions/checkout@v3
-      - uses: action/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
-          node-version:
-            ${{ matrix.node-version }}
+          node-version: '18.x'
           registry-url: 'https://registry.npmjs.org'
       - run: make install
       - run: npm link
-
-  test:
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [ 18.x ]
-
-    steps:
-      - uses: actions/checkout@v3
-      - uses: action/setup-node@v2
-        with:
-          node-version:
-            ${{ matrix.node-version }}
-          registry-url: 'https://registry.npmjs.org'
       - run: make test
       - run: make test-coverage
-
-  code-style:
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [ 18.x ]
-
-    steps:
-      - uses: actions/checkout@v3
-      - uses: action/setup-node@v2
-        with:
-          node-version:
-            ${{ matrix.node-version }}
-          registry-url: 'https://registry.npmjs.org'
       - run: make lint
