@@ -11,8 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: make install
-      - run: npm link
       - run: make test
       - run: make test-coverage
   code-style:
