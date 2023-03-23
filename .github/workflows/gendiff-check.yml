@@ -5,14 +5,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - install: npm install
-      - link: npm link
+      - run: npm install
+      - run: npm link
   test:
     runs-on: ubuntu-latest
     steps:
-      - test: npx jest
-      - test-coverage: npx jest --coverage
+      - uses: actions/checkout@v3
+      - run: npm install
+      - run: npm link
+      - run: make test
+      - run: make test-coverage
   code-style:
     runs-on: ubuntu-latest
     steps:
-      - lint: npx eslint .
+      - uses: actions/checkout@v3
+      - run: make lint
