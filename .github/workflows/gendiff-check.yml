@@ -4,6 +4,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: build project
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
@@ -11,6 +12,16 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - run: make install
       - run: npm link
+
+      - name: run tests
       - run: make test
       - run: make test-coverage
       - run: make lint
+
+      - name: Test & publish code coverage
+        uses: paambaati/codeclimate-action@v3.0.0
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.TEST_REPORTER_ID }}
+        with:
+          coverageCommand: make test-coverage
+          debug: true
