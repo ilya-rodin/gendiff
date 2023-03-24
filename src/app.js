@@ -7,7 +7,7 @@ const getDataPath = (fileName1, fileName2) => {
   const absolutePath2 = path.resolve(process.cwd(), fileName2);
 
   return [absolutePath1, absolutePath2];
-}
+};
 
 const getParsedData = (fileName1, fileName2) => {
   const [path1, path2] = getDataPath(fileName1, fileName2);
@@ -15,7 +15,7 @@ const getParsedData = (fileName1, fileName2) => {
   const data2 = JSON.parse(fs.readFileSync(path2, 'utf-8'));
 
   return [data1, data2];
-}
+};
 
 const genDiff = (filepath1, filepath2) => {
   const [data1, data2] = getParsedData(filepath1, filepath2);
@@ -50,6 +50,6 @@ const genDiff = (filepath1, filepath2) => {
   result = `{\n${result}}`;
   return result;
   /* eslint-enable no-param-reassign */
-}
+};
 
 module.exports = genDiff;
