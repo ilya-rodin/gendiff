@@ -24,9 +24,9 @@ function genDiff(filepath1, filepath2) {
     acc += spaces;
 
     if (
-      _.includes(keys1, key) &&
-      _.includes(keys2, key) &&
-      data1[key] !== data2[key]
+      _.includes(keys1, key)
+      && _.includes(keys2, key)
+      && data1[key] !== data2[key]
     ) {
       acc += `- ${key}: ${data1[key]}\n  + ${key}: ${data2[key]}\n`;
       return acc;
