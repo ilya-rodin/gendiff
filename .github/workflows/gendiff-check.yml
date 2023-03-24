@@ -10,10 +10,10 @@ jobs:
           node-version: '18.x'
           registry-url: 'https://registry.npmjs.org'
       - run: make install
-      - run: npm link
+      - run: make lint
+
       - run: make test
       - run: make test-coverage
-      - run: make lint
 
       - name: Test & publish code coverage
         # Publish code coverage on Code Climate
