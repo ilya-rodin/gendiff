@@ -14,12 +14,12 @@ jobs:
       - run: npm link
 
       - name: Test & publish code coverage
-        - run: make test
-        - run: make test-coverage
-        - run: make lint
-          uses: paambaati/codeclimate-action@v3.0.0
-          env:
-            CC_TEST_REPORTER_ID: ${{ secrets.TEST_REPORTER_ID }}
-          with:
-            coverageCommand: make test-coverage
-            debug: true
+        uses: paambaati/codeclimate-action@v3.0.0
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.TEST_REPORTER_ID }}
+        with:
+          coverageCommand: make test-coverage
+          debug: true
+      - run: make test
+      - run: make test-coverage
+      - run: make lint
