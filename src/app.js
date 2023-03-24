@@ -13,7 +13,6 @@ function getDataFromPath(filepath1, filepath2) {
 
 function genDiff(filepath1, filepath2) {
   const [data1, data2] = getDataFromPath(filepath1, filepath2);
-
   const keys1 = _.sortBy(_.keys(data1));
   const keys2 = _.sortBy(_.keys(data2));
   const keys = _.union(keys1, keys2);
@@ -23,11 +22,8 @@ function genDiff(filepath1, filepath2) {
   let result = keys.reduce((acc, key) => {
     acc += spaces;
 
-    if (
-      _.includes(keys1, key)
-      && _.includes(keys2, key)
-      && data1[key] !== data2[key]
-    ) {
+    if (_.includes(keys1, key) && _.includes(keys2, key)
+        && data1[key] !== data2[key]) {
       acc += `- ${key}: ${data1[key]}\n  + ${key}: ${data2[key]}\n`;
       return acc;
     }
@@ -45,7 +41,6 @@ function genDiff(filepath1, filepath2) {
     acc += `${spaces}${key}: ${data1[key]}\n`;
     return acc;
   }, '');
-
   result = `{\n${result}}`;
   return result;
   /* eslint-enable no-param-reassign */
