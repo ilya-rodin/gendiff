@@ -17,8 +17,10 @@ const getParsedData = (fileName1, fileName2) => {
 
   let data1;
   let data2;
-  if ((file1Format === 'yml' && file2Format === 'yml')
-      || (file1Format === 'yaml' && file2Format === 'yaml')) {
+  if (
+    (file1Format === 'yml' && file2Format === 'yml')
+    || (file1Format === 'yaml' && file2Format === 'yaml')
+  ) {
     data1 = yaml.load(fs.readFileSync(path1, { encoding: 'utf-8' }));
     data2 = yaml.load(fs.readFileSync(path2, { encoding: 'utf-8' }));
   } else {
