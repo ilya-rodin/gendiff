@@ -18,7 +18,6 @@ npm link
 ## Usage example
 
 ### Working with JSON format
-
 [![asciicast](https://asciinema.org/a/jjOLGMTKgDTolXSKIv1URxOwK.svg)](https://asciinema.org/a/jjOLGMTKgDTolXSKIv1URxOwK)
 
 ### Working with YAML format
