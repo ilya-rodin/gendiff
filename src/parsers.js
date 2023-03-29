@@ -2,9 +2,9 @@ const yaml = require('js-yaml');
 const fs = require('fs');
 const path = require('path');
 
-const getDataPath = (fileName1, fileName2) => {
-  const absolutePath1 = path.resolve(process.cwd(), fileName1);
-  const absolutePath2 = path.resolve(process.cwd(), fileName2);
+const getDataPath = (filepath1, filepath2) => {
+  const absolutePath1 = path.resolve(process.cwd(), filepath1);
+  const absolutePath2 = path.resolve(process.cwd(), filepath2);
 
   return [absolutePath1, absolutePath2];
 };
