@@ -1,23 +1,22 @@
 const _ = require('lodash');
 
 const generateDiff = (data1, data2) => {
-  const keys1 = _.sortBy(_.keys(data1));
-  const keys2 = _.sortBy(_.keys(data2));
-  const keys = _.union(keys1, keys2);
+  const [keys1, keys2] = [_.keys(data1), _.keys(data2)];
+  const keys = _.sortBy(_.union(keys1, keys2));
 
   return keys.map((key) => {
-    if (!_.includes(data2, key)) {
+    if (!_.has(data2, key)) {
       return {
         key,
         type: 'deleted',
         value: data1[key],
       };
     }
-    if (!_.includes(data2, key)) {
+    if (!_.has(data1, key)) {
       return {
         key,
         type: 'added',
-        value: data1[key],
+        value: data2[key],
       };
     }
     if (_.isPlainObject(data1[key]) && _.isPlainObject(data2[key])) {
