@@ -1,7 +1,7 @@
-const formatStylish = require('./stylish');
-const formatPlain = require('./plain');
+import formatStylish from './stylish';
+import formatPlain from './plain';
 
-module.exports = (tree, formatType) => {
+export default (tree, formatType) => {
   switch (formatType) {
     case 'stylish':
       return formatStylish(tree);

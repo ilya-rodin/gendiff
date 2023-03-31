@@ -1,6 +1,6 @@
-const yaml = require('js-yaml');
+import yaml from 'js-yaml';
 
-module.exports = (data, format) => {
+export default (data, format) => {
   switch (format) {
     case 'json':
       return JSON.parse(data);

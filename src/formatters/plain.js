@@ -1,4 +1,4 @@
-const _ = require('lodash');
+import _ from 'lodash';
 
 const stringify = (data) => {
   if (_.isObject(data)) {
@@ -17,7 +17,7 @@ const getPath = (node, current) => {
   return `${node.key}`;
 };
 
-module.exports = (tree) => {
+export default (tree) => {
   const iter = (diff, path) => diff
     .filter((node) => node.type !== 'unchanged')
     .map((node) => {

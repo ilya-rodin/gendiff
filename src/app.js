@@ -1,14 +1,14 @@
-const path = require('path');
-const fs = require('fs');
-const getParsedData = require('./parsers');
-const generateDiff = require('./generator');
-const format = require('./formatters/index');
+import path from 'path';
+import fs from 'fs';
+import getParsedData from './parsers';
+import generateDiff from './generator';
+import format from './formatters/index';
 
 const getAbsolutePath = (filepath) => path.resolve(process.cwd(), filepath);
 const getFormat = (filepath) => path.extname(filepath).substring(1);
 const readFile = (filepath) => fs.readFileSync(filepath, 'utf-8');
 
-module.exports = (filepath1, filepath2, formatType = 'stylish') => {
+export default (filepath1, filepath2, formatType = 'stylish') => {
   const absolutePath1 = getAbsolutePath(filepath1);
   const absolutePath2 = getAbsolutePath(filepath2);
 

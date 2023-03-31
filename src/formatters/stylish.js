@@ -1,4 +1,4 @@
-const _ = require('lodash');
+import _ from 'lodash';
 
 const indentTwoOrSix = (depth, spacesCount = 4) => {
   const indentSize = depth * spacesCount;
@@ -20,7 +20,7 @@ const stringify = (data, depth) => {
   return `{\n${lines.join('\n')}\n${indentFourOrEight(depth)}}`;
 };
 
-module.exports = (tree) => {
+export default (tree) => {
   const iter = (diff, depth = 1) => diff.map((node) => {
     switch (node.type) {
       case 'deleted':
@@ -42,7 +42,7 @@ module.exports = (tree) => {
         )}\n${indentFourOrEight(depth)}}`;
       }
       default:
-        return '';
+        throw new Error('Unsupported type');
     }
   });
 

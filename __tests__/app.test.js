@@ -1,7 +1,7 @@
-const path = require('path');
-const genDiff = require('../src/app');
+import path from 'path';
+import genDiff from '../src/app';
 
-const { stylishOutput, jsonOutput, plainOutput } = require('../__fixtures__/outputs');
+import { stylishOutput, jsonOutput, plainOutput } from '../__fixtures__/outputs';
 
 const path1Json = path.resolve('__fixtures__', 'file1.json');
 const path2Json = path.resolve('__fixtures__', 'file2.json');

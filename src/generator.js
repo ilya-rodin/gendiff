@@ -1,4 +1,4 @@
-const _ = require('lodash');
+import _ from 'lodash';
 
 const generateDiff = (data1, data2) => {
   const [keys1, keys2] = [_.keys(data1), _.keys(data2)];
@@ -42,4 +42,4 @@ const generateDiff = (data1, data2) => {
   });
 };
 
-module.exports = generateDiff;
+export default generateDiff;
