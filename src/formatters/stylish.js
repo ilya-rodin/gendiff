@@ -11,7 +11,7 @@ const indentFourOrEight = (depth, spacesCount = 4) => {
 };
 
 const stringify = (data, depth) => {
-  if (!_.isPlainObject(data)) {
+  if (!_.isObject(data)) {
     return `${data}`;
   }
   const lines = _.entries(data).map(

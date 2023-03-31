@@ -19,7 +19,7 @@ const generateDiff = (data1, data2) => {
         value: data2[key],
       };
     }
-    if (_.isPlainObject(data1[key]) && _.isPlainObject(data2[key])) {
+    if (_.isObject(data1[key]) && _.isObject(data2[key])) {
       return {
         key,
         children: generateDiff(data1[key], data2[key]),
