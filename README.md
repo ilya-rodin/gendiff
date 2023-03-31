@@ -28,3 +28,7 @@ npm link
 ### Working with nested objects
 
 [![asciicast](https://asciinema.org/a/YDXawRIGuoY5BeEkH2MRZHo7q.svg)](https://asciinema.org/a/YDXawRIGuoY5BeEkH2MRZHo7q)
+
+### Plain output type
+
+[![asciicast](https://asciinema.org/a/1TFkvjDADw7sKCRlMJbttlui7.svg)](https://asciinema.org/a/1TFkvjDADw7sKCRlMJbttlui7)
