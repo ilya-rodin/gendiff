@@ -8,7 +8,7 @@
     "url": "https://github.com/ilya-rodin/frontend-project-46"
   },
   "scripts": {
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --colors"
   },
   "bin": {
     "gendiff": "bin/gendiff.js"
