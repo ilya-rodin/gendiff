@@ -1,8 +1,8 @@
 import path from 'path';
 import fs from 'fs';
-import getParsedData from './parsers';
-import generateDiff from './generator';
-import format from './formatters/index';
+import getParsedData from './parsers.js';
+import generateDiff from './generator.js';
+import format from './formatters/index.js';
 
 const getAbsolutePath = (filepath) => path.resolve(process.cwd(), filepath);
 const getFormat = (filepath) => path.extname(filepath).substring(1);
