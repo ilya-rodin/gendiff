@@ -1,5 +1,5 @@
 import path from 'path';
-import genDiff from '../src/app';
+import genDiff from '../src/index';
 
 import { stylishOutput, jsonOutput, plainOutput } from '../__fixtures__/outputs';
 

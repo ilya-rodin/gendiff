@@ -2,7 +2,7 @@
   "name": "@hexlet/code",
   "version": "1.0.0",
   "description": "Console application that can find difference between two files",
-  "main": "src/app.js",
+  "main": "src/index.js",
   "type": "module",
   "repository": {
     "url": "https://github.com/ilya-rodin/frontend-project-46"
