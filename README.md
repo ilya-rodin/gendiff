@@ -6,6 +6,12 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/8946ce4d215fa8679c50/maintainability)](https://codeclimate.com/github/ilya-rodin/frontend-project-46/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/8946ce4d215fa8679c50/test_coverage)](https://codeclimate.com/github/ilya-rodin/frontend-project-46/test_coverage)
 
+## Introduction
+
+Gendiff is an application that can find difference between two files.
+
+Gendiff supports different types of formatting, and also works with JSON and YAML formats
+
 ## Minimum requirements
 
 Node.js version: 18.14.2 LTS
