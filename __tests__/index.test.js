@@ -1,73 +1,56 @@
-import path from 'path';
+import { join, dirname } from 'path';
+import { readFileSync } from 'fs';
+import { fileURLToPath } from 'url';
 import genDiff from '../src/index.js';
 
-import { stylishOutput, jsonOutput, plainOutput } from '../__fixtures__/outputs';
+/* eslint-disable no-underscore-dangle */
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+/* eslint-disable no-underscore-dangle */
 
-const path1Json = path.resolve('__fixtures__', 'file1.json');
-const path2Json = path.resolve('__fixtures__', 'file2.json');
-const path1Yml = path.resolve('__fixtures__', 'file1.yml');
-const path2Yml = path.resolve('__fixtures__', 'file2.yml');
-const path1Yaml = path.resolve('__fixtures__', 'file1.yaml');
-const path2Yaml = path.resolve('__fixtures__', 'file2.yaml');
+const getFixturePath = (filename) => join(__dirname, '..', '__fixtures__', filename);
+const readFixtureFile = (filename) => readFileSync(getFixturePath(filename), 'utf-8');
+
+const path1Json = getFixturePath('file1.json');
+const path2Json = getFixturePath('file2.json');
+const path1Yml = getFixturePath('file1.yml');
+const path2Yml = getFixturePath('file2.yml');
+const path1Yaml = getFixturePath('file1.yaml');
+const path2Yaml = getFixturePath('file2.yaml');
+
+const stylishOutput = readFixtureFile('stylishOutput.txt');
+const plainOutput = readFixtureFile('plainOutput.txt');
+const jsonOutput = readFixtureFile('jsonOutput.txt');
 
 describe('Diff stylish tests', () => {
-  test('#1 diff stylish two json files', () => {
-    const diff = genDiff(path1Json, path2Json);
-    expect(diff).toEqual(stylishOutput);
+  test.each([
+    { diff: genDiff(path1Json, path2Json), expected: stylishOutput },
+    { diff: genDiff(path1Yml, path2Yml), expected: stylishOutput },
+    { diff: genDiff(path1Yaml, path2Yml), expected: stylishOutput },
+    { diff: genDiff(path1Json, path2Yaml), expected: stylishOutput },
+  ])('# $#', ({ diff, expected }) => {
+    expect(diff).toEqual(expected);
   });
+});
 
-  test('#2 diff stylish two yaml files', () => {
-    const diff = genDiff(path1Yml, path2Yml);
-    expect(diff).toEqual(stylishOutput);
+describe('Diff plain tests', () => {
+  test.each([
+    { diff: genDiff(path1Json, path2Json, 'plain'), expected: plainOutput },
+    { diff: genDiff(path1Yml, path2Yml, 'plain'), expected: plainOutput },
+    { diff: genDiff(path1Yaml, path2Yml, 'plain'), expected: plainOutput },
+    { diff: genDiff(path1Json, path2Yaml, 'plain'), expected: plainOutput },
+  ])('# $#', ({ diff, expected }) => {
+    expect(diff).toEqual(expected);
   });
+});
 
-  test('#3 diff stylish yaml and yml files', () => {
-    const diff = genDiff(path1Yaml, path2Yml);
-    expect(diff).toEqual(stylishOutput);
-  });
-
-  test('#4 diff stylish json and yaml', () => {
-    const diff = genDiff(path1Json, path2Yaml);
-    expect(diff).toEqual(stylishOutput);
-  });
-
-  test('#5 diff plain two json files', () => {
-    const diff = genDiff(path1Json, path2Json, 'plain');
-    expect(diff).toEqual(plainOutput);
-  });
-
-  test('#6 diff plain two yaml files', () => {
-    const diff = genDiff(path1Yml, path2Yml, 'plain');
-    expect(diff).toEqual(plainOutput);
-  });
-
-  test('#7 diff plain yaml and yml files', () => {
-    const diff = genDiff(path1Yaml, path2Yml, 'plain');
-    expect(diff).toEqual(plainOutput);
-  });
-
-  test('#8 diff plain json and yml', () => {
-    const diff = genDiff(path1Json, path2Yaml, 'plain');
-    expect(diff).toEqual(plainOutput);
-  });
-
-  test('#9 diff json two json files', () => {
-    const diff = genDiff(path1Json, path2Json, 'json');
-    expect(diff).toEqual(jsonOutput);
-  });
-
-  test('#10 diff json two yaml files', () => {
-    const diff = genDiff(path1Yml, path2Yml, 'json');
-    expect(diff).toEqual(jsonOutput);
-  });
-
-  test('#11 diff json yaml and yml files', () => {
-    const diff = genDiff(path1Yaml, path2Yml, 'json');
-    expect(diff).toEqual(jsonOutput);
-  });
-
-  test('#12 diff json json and yml', () => {
-    const diff = genDiff(path1Json, path2Yaml, 'json');
-    expect(diff).toEqual(jsonOutput);
+describe('Diff json tests', () => {
+  test.each([
+    { diff: genDiff(path1Json, path2Json, 'json'), expected: jsonOutput },
+    { diff: genDiff(path1Yml, path2Yml, 'json'), expected: jsonOutput },
+    { diff: genDiff(path1Yaml, path2Yml, 'json'), expected: jsonOutput },
+    { diff: genDiff(path1Json, path2Yaml, 'json'), expected: jsonOutput },
+  ])('# $#', ({ diff, expected }) => {
+    expect(diff).toEqual(expected);
   });
 });
