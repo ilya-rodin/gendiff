@@ -22,7 +22,7 @@ npm version: 9.5.0
 
 ```bash
 git clone https://github.com/ilya-rodin/frontend-project-46
-cd frontend-project-44/
+cd frontend-project-46/
 make install
 npm link
 ```
