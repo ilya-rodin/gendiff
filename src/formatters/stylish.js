@@ -1,51 +1,39 @@
 import _ from 'lodash';
 
-const indentTwoOrSix = (depth, spacesCount = 4) => {
-  const indentSize = depth * spacesCount;
-  return ' '.repeat(indentSize - 2);
-};
-
-const indentFourOrEight = (depth, spacesCount = 4) => {
-  const indentSize = depth * spacesCount;
-  return ' '.repeat(indentSize);
-};
+const indent = (depth, spaceCount = 4) => ' '.repeat(depth * spaceCount - 2);
 
 const stringify = (data, depth) => {
   if (!_.isObject(data)) {
     return `${data}`;
   }
-  const lines = _.entries(data).map(
-    ([key, value]) => `${indentFourOrEight(depth + 1)}${key}: ${stringify(value, depth + 1)}`,
-  );
-  return `{\n${lines.join('\n')}\n${indentFourOrEight(depth)}}`;
+  const lines = _.entries(data).map(([key, value]) => `${indent(depth + 1)}  ${key}: ${stringify(value, depth + 1)}`);
+  return ['{', ...lines, `  ${indent(depth)}}`].join('\n');
+};
+
+const getStylishDiff = (node, depth, iter) => {
+  switch (node.type) {
+    case 'added':
+      return `${indent(depth)}+ ${node.key}: ${stringify(node.value, depth)}`;
+    case 'deleted':
+      return `${indent(depth)}- ${node.key}: ${stringify(node.value, depth)}`;
+    case 'unchanged':
+      return `${indent(depth)}  ${node.key}: ${stringify(node.value, depth)}`;
+    case 'changed':
+      return [
+        `${indent(depth)}- ${node.key}: ${stringify(node.value1, depth)}`,
+        `${indent(depth)}+ ${node.key}: ${stringify(node.value2, depth)}`,
+      ].join('\n');
+    case 'nested':
+      return `${indent(depth)}  ${node.key}: {\n${iter(node.children, depth + 1)}\n  ${indent(depth)}}`;
+    default:
+      throw new Error(`Unknown type: '${node.type}'`);
+  }
 };
 
 export default (tree) => {
-  const iter = (diff, depth = 1) => diff.map((node) => {
-    switch (node.type) {
-      case 'deleted':
-        return `${indentTwoOrSix(depth)}- ${node.key}: ${stringify(node.value, depth)}`;
-      case 'added':
-        return `${indentTwoOrSix(depth)}+ ${node.key}: ${stringify(node.value, depth)}`;
-      case 'changed': {
-        return `${indentTwoOrSix(depth)}- ${node.key}: ${stringify(
-          node.value1,
-          depth,
-        )}\n${indentTwoOrSix(depth)}+ ${node.key}: ${stringify(node.value2, depth)}`;
-      }
-      case 'unchanged':
-        return `${indentFourOrEight(depth)}${node.key}: ${stringify(node.value, depth)}`;
-      case 'nested': {
-        const lines = iter(node.children, depth + 1);
-        return `${indentFourOrEight(depth)}${node.key}: {\n${lines.join(
-          '\n',
-        )}\n${indentFourOrEight(depth)}}`;
-      }
-      default:
-        throw new Error('Unsupported type');
-    }
-  });
-
-  const result = iter(tree, 1);
-  return `{\n${result.join('\n')}\n}`;
+  const iter = (nodes, depth = 1) => {
+    const newNodes = nodes.map((node) => getStylishDiff(node, depth, iter));
+    return newNodes.join('\n');
+  };
+  return `{\n${iter(tree)}\n}`;
 };

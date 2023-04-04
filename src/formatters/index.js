@@ -10,6 +10,6 @@ export default (tree, formatType) => {
     case 'json':
       return JSON.stringify(tree);
     default:
-      throw new Error('Unsupported format type');
+      throw new Error(`Unsupported format type ${formatType}`);
   }
 };
