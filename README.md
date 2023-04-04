@@ -21,7 +21,9 @@ npm version: 9.5.0
 ## Install
 
 ```bash
-npm install
+git clone https://github.com/ilya-rodin/frontend-project-46
+cd frontend-project-44/
+make install
 npm link
 ```
 
