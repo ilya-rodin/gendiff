@@ -1,8 +1,7 @@
 import _ from 'lodash';
 
 const generateDiff = (data1, data2) => {
-  const [keys1, keys2] = [_.keys(data1), _.keys(data2)];
-  const keys = _.sortBy(_.union(keys1, keys2));
+  const keys = _.sortBy(_.union(_.keys(data1), _.keys(data2)));
 
   return keys.map((key) => {
     if (!_.has(data2, key)) {
@@ -19,7 +18,7 @@ const generateDiff = (data1, data2) => {
         value: data2[key],
       };
     }
-    if (_.isObject(data1[key]) && _.isObject(data2[key])) {
+    if (_.isPlainObject(data1[key]) && _.isPlainObject(data2[key])) {
       return {
         key,
         children: generateDiff(data1[key], data2[key]),
