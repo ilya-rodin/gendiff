@@ -1,12 +1,16 @@
 # gendiff
 
-## Hexlet tests and linter status
-
 [![Actions Status](https://github.com/ilya-rodin/frontend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/ilya-rodin/frontend-project-46/actions)
 [![Actions Status](https://github.com/ilya-rodin/frontend-project-46/workflows/gendiff-check/badge.svg)](https://github.com/ilya-rodin/frontend-project-46/actions)
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/8946ce4d215fa8679c50/maintainability)](https://codeclimate.com/github/ilya-rodin/frontend-project-46/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/8946ce4d215fa8679c50/test_coverage)](https://codeclimate.com/github/ilya-rodin/frontend-project-46/test_coverage)
+
+## Minimum requirements
+
+Node.js version: 18.14.2 LTS
+
+npm version: 9.5.0
 
 ## Install
 
@@ -17,22 +21,18 @@ npm link
 
 ## Usage example
 
-### Working with JSON format
+### Working with flat JSON files
 
-[![asciicast](https://asciinema.org/a/jjOLGMTKgDTolXSKIv1URxOwK.svg)](https://asciinema.org/a/jjOLGMTKgDTolXSKIv1URxOwK)
+[![asciicast](https://asciinema.org/a/574167.svg)](https://asciinema.org/a/574167)
 
-### Working with YAML format
+### Working with flat YAML files
 
-[![asciicast](https://asciinema.org/a/qMXDX7cFFrVaelzQr8roKxSUj.svg)](https://asciinema.org/a/qMXDX7cFFrVaelzQr8roKxSUj)
+[![asciicast](https://asciinema.org/a/574169.svg)](https://asciinema.org/a/574169)
 
 ### Working with nested objects
 
-[![asciicast](https://asciinema.org/a/YDXawRIGuoY5BeEkH2MRZHo7q.svg)](https://asciinema.org/a/YDXawRIGuoY5BeEkH2MRZHo7q)
+[![asciicast](https://asciinema.org/a/574170.svg)](https://asciinema.org/a/574170)
 
 ### Plain output format
 
-[![asciicast](https://asciinema.org/a/1TFkvjDADw7sKCRlMJbttlui7.svg)](https://asciinema.org/a/1TFkvjDADw7sKCRlMJbttlui7)
-
-### Json output format
-
-[![asciicast](https://asciinema.org/a/hx5ClewjOeuwrMPDdrE49eeDJ.svg)](https://asciinema.org/a/hx5ClewjOeuwrMPDdrE49eeDJ)
+[![asciicast](https://asciinema.org/a/574173.svg)](https://asciinema.org/a/574173)
