@@ -21,7 +21,7 @@ npm version: 9.5.0
 ## Install
 
 ```bash
-git clone https://github.com/ilya-rodin/frontend-project-46
+git clone https://github.com/ilya-rodin/gendiff
 cd frontend-project-46/
 make install
 npm link
