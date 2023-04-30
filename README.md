@@ -22,7 +22,7 @@ npm version: 9.5.0
 
 ```bash
 git clone https://github.com/ilya-rodin/gendiff
-cd frontend-project-46/
+cd gendiff/
 make install
 npm link
 ```
